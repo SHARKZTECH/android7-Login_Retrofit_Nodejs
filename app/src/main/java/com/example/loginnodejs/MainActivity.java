@@ -3,7 +3,13 @@ package com.example.loginnodejs;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.loginDial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                handleLoginDialog();
+                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -84,38 +91,44 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void handleLoginDialog() {
-        View view=getLayoutInflater().inflate(R.layout.login_dialog,null);
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-
-        Button login=findViewById(R.id.login);
-        EditText emailInp=findViewById(R.id.email);
-        EditText passwordInp=findViewById(R.id.password);
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
-//                HashMap<String,String> map=new HashMap<>();
-//                map.put("email",emailInp.getText().toString());
-//                map.put("password",passwordInp.getText().toString());
-//                Call<LoginResults> call=retrofitInterface.excuteLogin(map);
+//    private void handleLoginDialog() {
+//        View view=getLayoutInflater().inflate(R.layout.login_dialog,null);
+//        AlertDialog.Builder builder=new AlertDialog.Builder(this);
 //
-//                call.enqueue(new Callback<LoginResults>() {
-//                    @Override
-//                    public void onResponse(Call<LoginResults> call, Response<LoginResults> response) {
-//                        Toast.makeText(MainActivity.this, response.message(), Toast.LENGTH_SHORT).show();
-//                    }
+//        builder.setView(view);
+//        final AlertDialog alertDialog=builder.create();
 //
-//                    @Override
-//                    public void onFailure(Call<LoginResults> call, Throwable t) {
-//                        Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
- //               });
-            }
-        });
-
-        builder.setView(view).show();
-
-    }
+//        Button login=alertDialog.findViewById(R.id.login);
+//        EditText emailInp=alertDialog.findViewById(R.id.email);
+//        EditText passwordInp=alertDialog.findViewById(R.id.password);
+//
+//
+////
+////        login.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                Toast.makeText(MainActivity.this, "Login", Toast.LENGTH_SHORT).show();
+//////                HashMap<String,String> map=new HashMap<>();
+//////                map.put("email",emailInp.getText().toString());
+//////                map.put("password",passwordInp.getText().toString());
+//////                Call<LoginResults> call=retrofitInterface.excuteLogin(map);
+//////
+//////                call.enqueue(new Callback<LoginResults>() {
+//////                    @Override
+//////                    public void onResponse(Call<LoginResults> call, Response<LoginResults> response) {
+//////                        Toast.makeText(MainActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+//////                    }
+//////
+//////                    @Override
+//////                    public void onFailure(Call<LoginResults> call, Throwable t) {
+//////                        Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//////                    }
+//////                });
+////            }
+////        });
+//
+//        alertDialog.show();
+//
+//
+//    }
 }
