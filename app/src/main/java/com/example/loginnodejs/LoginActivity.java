@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,7 +50,16 @@ public class LoginActivity extends AppCompatActivity {
                 call.enqueue(new Callback<LoginResults>() {
                     @Override
                     public void onResponse(Call<LoginResults> call, Response<LoginResults> response) {
-                        Toast.makeText(LoginActivity.this,"Login Successfully", Toast.LENGTH_SHORT).show();
+                    if(response.isSuccessful()){
+                        LoginResults results=response.body();
+                        Toast.makeText(LoginActivity.this, results.getName(), Toast.LENGTH_SHORT).show();
+                    }
+                    if(response.code() == 400){
+                        Toast.makeText(LoginActivity.this,"Incorrect Username or Password", Toast.LENGTH_SHORT).show();
+                    }else{
+                            Toast.makeText(LoginActivity.this,"Login successfully!", Toast.LENGTH_SHORT).show();
+                        Log.d("User",response.toString());
+                        }
                     }
 
                     @Override
