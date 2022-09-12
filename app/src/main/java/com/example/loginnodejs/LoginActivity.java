@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL="http://192.168.162.5:5000/api/user/";
+    private String BASE_URL="http://192.168.88.35:5000/api/user/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
